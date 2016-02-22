@@ -90,4 +90,15 @@ public final class BluetoothAvrcp {
     public static final int PASSTHROUGH_ID_F5          = 0x75;    /* F5 */
     public static final int PASSTHROUGH_ID_VENDOR      = 0x7E;    /* vendor unique */
     public static final int PASSTHROUGH_KEYPRESSED_RELEASE = 0x80;
+
+    /**
+     * Attribure ids for getElementAttr command
+     */
+    public static final int MEDIA_ATTR_TITLE = 0x01;
+    public static final int MEDIA_ATTR_ARTIST = 0x02;
+    public static final int MEDIA_ATTR_ALBUM = 0x03;
+    public static final int MEDIA_ATTR_TRACK_NUM = 0x04;
+    public static final int MEDIA_ATTR_NUM_TRACKS = 0x05;
+    public static final int MEDIA_ATTR_GENRE = 0x06;
+    public static final int MEDIA_ATTR_PLAYING_TIME = 0x07;
 }

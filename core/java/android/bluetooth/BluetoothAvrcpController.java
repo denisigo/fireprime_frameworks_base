@@ -223,6 +223,48 @@ public final class BluetoothAvrcpController implements BluetoothProfile {
         if (mService == null) Log.w(TAG, "Proxy not attached to service");
     }
 
+    public void getElementAttr(BluetoothDevice device, int numAttr, int[] attrs) {
+        if (DBG) Log.d(TAG, "getElementAttr numAttr: "+numAttr);
+        if (mService != null && isEnabled()) {
+            try {
+                mService.getElementAttr(device, numAttr, attrs);
+                return;
+            } catch (RemoteException e) {
+                Log.e(TAG, "Error talking to BT service in getElementAttr()", e);
+                return;
+            }
+        }
+        if (mService == null) Log.w(TAG, "Proxy not attached to service");
+    }
+
+    public void setCallback(IBluetoothAvrcpControllerCallback callback) {
+        if (DBG) Log.d(TAG, "setCallback");
+        if (mService != null && isEnabled()) {
+            try {
+                mService.setCallback(callback);
+                return;
+            } catch (RemoteException e) {
+                Log.e(TAG, "Error talking to BT service in setCallback()", e);
+                return;
+            }
+        }
+        if (mService == null) Log.w(TAG, "Proxy not attached to service");
+    }
+
+    public void removeCallback() {
+        if (DBG) Log.d(TAG, "removeCallback");
+        if (mService != null && isEnabled()) {
+            try {
+                mService.removeCallback();
+                return;
+            } catch (RemoteException e) {
+                Log.e(TAG, "Error talking to BT service in removeCallback()", e);
+                return;
+            }
+        }
+        if (mService == null) Log.w(TAG, "Proxy not attached to service");
+    }
+
     private final ServiceConnection mConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder service) {
             if (DBG) Log.d(TAG, "Proxy object connected");

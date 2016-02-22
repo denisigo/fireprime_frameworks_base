@@ -17,6 +17,7 @@
 package android.bluetooth;
 
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.IBluetoothAvrcpControllerCallback;
 
 /**
  * APIs for Bluetooth AVRCP controller service
@@ -28,4 +29,8 @@ interface IBluetoothAvrcpController {
     List<BluetoothDevice> getDevicesMatchingConnectionStates(in int[] states);
     int getConnectionState(in BluetoothDevice device);
     void sendPassThroughCmd(in BluetoothDevice device, int keyCode, int keyState);
+    void getElementAttr(in BluetoothDevice device, int numAttr, in int[] attrs);
+    // Just one callback at a time allowed
+    void setCallback(in IBluetoothAvrcpControllerCallback callback);
+    void removeCallback();
 }
